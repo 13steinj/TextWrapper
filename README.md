@@ -1,7 +1,7 @@
 # TextWrapper
 
 This script allows the user, that when s/he runs it, can choose a file within the same directory as the script, to get "text-wrapped".  
-This is useful for files, such as LICENSE(s), that can at times stray off in long lines.
+This is useful for files, such as LICENSE(s), that can at times stray off in long lines.  
 **IF SOMEONE CONVINCED YOU TO PURCHASE THIS SCRIPT, YOU WERE SCAMMED.**
 **THIS SCRIPT WAS, IS, AND ALWAYS WILL BE FREE AND OPEN SOURCE**
 
