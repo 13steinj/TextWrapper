@@ -6,7 +6,7 @@ This is useful for files, such as LICENSE(s), that can at times stray off in lon
 **THIS SCRIPT WAS, IS, AND ALWAYS WILL BE FREE AND OPEN SOURCE**
 
 ## Requirements
-Python 3
+Python 3  
 Python 3.4.3 or higher is recommended.
 
 ### Prerequisite packages
