@@ -11,9 +11,6 @@ except ImportError:
     import tkinter as Tkinter
     from tkinter import messagebox as tkMessageBox
     from tkinter import filedialog as tkFileDialog
-# Bottom three modules are imported for technicalities.
-# For all intents and purposes, they are not really *useful* to this script's purpose
-# Ask someone who understands python. They'll agree.
 
 def makewrappedtext(filename, maxcharsinsingleline):
     if not mainwindow == Tkinter.Tk().withdraw():
