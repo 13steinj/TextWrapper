@@ -3,19 +3,31 @@ import os
 import sys
 import subprocess
 
+try:
+    import Tkinter
+    import tkMessageBox
+    import tkFileDialog
+except ImportError:
+    import tkinter as Tkinter
+    from tkinter import messagebox as tkMessageBox
+    from tkinter import filedialog as tkFileDialog
 # Bottom three modules are imported for technicalities.
 # For all intents and purposes, they are not really *useful* to this script's purpose
 # Ask someone who understands python. They'll agree.
 
 def makewrappedtext(filename, maxcharsinsingleline):
+    if not mainwindow == Tkinter.Tk().withdraw():
+        mainwindow = Tkinter.Tk().withdraw()
+    else:
+        pass
+
     unwrappedfile = open(filename, "r").read()
     writer = textwrap.fill(unwrappedfile, maxcharsinsingleline)
     WANTTOTRUNCATE = input("Would you like to overwrite the existing file (Y/n)?")
     positive_answer = ['yes', 'ye', 'y']
     negative_answer = ['no', 'n']
     answers = ['yes', 'ye', 'y', 'no', 'n']
-    while WANTTOTRUNCATE.lower() not in answers: 
-        WANTTOTRUNCATE = input("You did not input a valid answer.\nPlease choose 'Y' for yes or 'n' for no.\n")
+
     if WANTTOTRUNCATE.lower() in positive_answer:
         print("Okay, the original file will be overwritten.")
         wrappedname = filename
@@ -48,8 +60,8 @@ def makewrappedtext(filename, maxcharsinsingleline):
     if VIEW.lower() in negative_answer:
         pass
 if __name__ == "__main__":
-    os.chdir(os.path.dirname(os.path.realpath(__file__)))
-    A = input("What file would you like to have \"text-wrapped\"\nThis file must exist, or else there shall be an error.\nRemember to include the file extension.\n")
+    mainwindow = Tkinter.Tk().withdraw()
+    A = tkFileDialog()
     B = int(input("What is the maximum amount of characters you want in a line of the \"text-wrapped\" file?\nNote: Spaces count.\n"))
     makewrappedtext(A, B)
     print("The script is complete.")
