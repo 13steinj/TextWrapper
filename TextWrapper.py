@@ -56,14 +56,22 @@ def makewrappedtext(filename, maxcharsinsingleline):
             subprocess.call(["xdg-open", wrappedname])
     if VIEW.lower() in negative_answer:
         pass
+    
+start():
+    start.pack_forget
+    
 if __name__ == "__main__":
     root = Tkinter.Tk()
     root.title("TextWrapper")
-    root.geometry("600x500")
-    mainlabel = Tkinter.Label(root, text="TextWrapper", font=("Helevetica", 24), pady=50)
-    copyrightlabel = Tkinter.Label(root, text="Copyright (c) 2015 Jonathan M. Stein", font=("Helevetica", 10))
+    root.geometry('%dx%d+%d+%d' % (600, 500, ((root.winfo_screenwidth()/2)-(600/2)), ((root.winfo_screenheight()/2)-(500/2))))
+    root.resizeable(width=False, height=False)
+    mainlabel = Tkinter.Label(root, text="TextWrapper", font=("Helevetica", 24))
     mainlabel.pack()
-    start = Tkinter.Button(root, text="Start TextWrapper")
+    mainlabel.place(width=600, rely=.25)
+    copyrightlabel = Tkinter.Label(root, text="Copyright (c) 2015 Jonathan M. Stein", font=("Helevetica", 10))
+    copyrightlabel.pack()
+    copyrightlabel.place(relx=.63, rely=.96)
+    start = Tkinter.Button(root, text="Start TextWrapper", command=start())
     A = tkFileDialog()
     B = int(input("What is the maximum amount of characters you want in a line of the \"text-wrapped\" file?\nNote: Spaces count.\n"))
     makewrappedtext(A, B)
