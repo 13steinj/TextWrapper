@@ -9,8 +9,8 @@ try:
     import tkFileDialog
 except ImportError:
     import tkinter as Tkinter
-    from tkinter import messagebox as tkMessageBox
-    from tkinter import filedialog as tkFileDialog
+    import tkinter.messagebox as tkMessageBox
+    import tkinter.filedialog as tkFileDialog
 
 def makewrappedtext(filename, maxcharsinsingleline):
     if not root == Tkinter.Tk().withdraw():
@@ -57,7 +57,12 @@ def makewrappedtext(filename, maxcharsinsingleline):
     if VIEW.lower() in negative_answer:
         pass
 if __name__ == "__main__":
-    root = Tkinter.Tk().title("TextWrapper").geometry("300x250")
+    root = Tkinter.Tk()
+    root.title("TextWrapper")
+    root.geometry("600x500")
+    mainlabel = Tkinter.Label(root, text="TextWrapper", font=("Helevetica", 24), pady=50)
+    copyrightlabel = Tkinter.Label(root, text="Copyright (c) 2015 Jonathan M. Stein", font=("Helevetica", 10))
+    mainlabel.pack()
     start = Tkinter.Button(root, text="Start TextWrapper")
     A = tkFileDialog()
     B = int(input("What is the maximum amount of characters you want in a line of the \"text-wrapped\" file?\nNote: Spaces count.\n"))
