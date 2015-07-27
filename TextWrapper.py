@@ -7,17 +7,14 @@ try:
     import Tkinter
     import tkMessageBox
     import tkFileDialog
+    import ttk
 except ImportError:
     import tkinter as Tkinter
     import tkinter.messagebox as tkMessageBox
     import tkinter.filedialog as tkFileDialog
+    import tkinter.ttk as ttk
 
 def makewrappedtext(filename, maxcharsinsingleline):
-    if not root == Tkinter.Tk().withdraw():
-        root = Tkinter.Tk().withdraw()
-    else:
-        pass
-
     unwrappedfile = open(filename, "r").read()
     writer = textwrap.fill(unwrappedfile, maxcharsinsingleline)
     WANTTOTRUNCATE = input("Would you like to overwrite the existing file (Y/n)?")
@@ -57,21 +54,29 @@ def makewrappedtext(filename, maxcharsinsingleline):
     if VIEW.lower() in negative_answer:
         pass
     
-start():
-    start.pack_forget
+def main()
     
-if __name__ == "__main__":
+    def startprocess():
+        start.pack_forget()
+        mainlabel.pack_forget()
+        choosefile = ttk.Button(root, text="Choose File to TextWrap", command=openfile())
+    
     root = Tkinter.Tk()
     root.title("TextWrapper")
+    root.resizable(width=False, height=False)
     root.geometry('%dx%d+%d+%d' % (600, 500, ((root.winfo_screenwidth()/2)-(600/2)), ((root.winfo_screenheight()/2)-(500/2))))
-    root.resizeable(width=False, height=False)
-    mainlabel = Tkinter.Label(root, text="TextWrapper", font=("Helevetica", 24))
+    mainlabel = ttk.Label(root, text="TextWrapper", font=("Helevetica", 24))
     mainlabel.pack()
-    mainlabel.place(width=600, rely=.25)
+    mainlabel.place(x=205, rely=.25)
     copyrightlabel = Tkinter.Label(root, text="Copyright (c) 2015 Jonathan M. Stein", font=("Helevetica", 10))
     copyrightlabel.pack()
     copyrightlabel.place(relx=.63, rely=.96)
-    start = Tkinter.Button(root, text="Start TextWrapper", command=start())
+    start = ttk.Button(root, text="Start TextWrapper", command=startprocess())
+    start.pack()
+    start.place(x=249, rely=.35)
+    
+if __name__ == "__main__":
+
     A = tkFileDialog()
     B = int(input("What is the maximum amount of characters you want in a line of the \"text-wrapped\" file?\nNote: Spaces count.\n"))
     makewrappedtext(A, B)
